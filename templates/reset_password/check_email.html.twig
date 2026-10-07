@@ -1,0 +1,23 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}E-mail de réinitialisation envoyé{% endblock %}
+
+{% block stylesheets %}
+{{ parent() }}
+   <link rel="stylesheet" href="{{ asset('styles/css/form.css') }}?v=1.0">
+{% endblock %}
+
+{% block body %}
+
+<div class="mickey">
+    <img src="{{ asset('images/mickey-formulaire.png') }}" alt="formulaire en forme de mickey" class="image_mickey">
+
+    <div class='form-mickey check_email'>
+        <p>
+        Un Email vient d'être envoyé pour ton mot de passe.</p>
+        <p>
+            Pense à regarder dans tes spam au cas où 😉
+        </p>
+    </div>
+</div>
+{% endblock %}

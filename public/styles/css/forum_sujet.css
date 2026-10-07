@@ -1,0 +1,216 @@
+html, body {
+    height: 100%; 
+    margin: 0; 
+    padding: 0;
+    transition: opacity 0.5s ease-in-out;
+}
+
+main {
+    font-family: "Indie Flower", cursive, sans-serif;
+    text-align: center;
+    margin: 0;
+    box-sizing: border-box;
+    background-image: url('/images/fond_du_site.png');
+    background-size: cover;
+    background-attachment: fixed;
+    display: flex;
+    width: 100%;
+    flex-direction: column;
+    padding: 19em 0em 6em 0em;
+}
+
+.container-sujet {
+    text-align: start;
+    display: flex;
+    flex-direction: column;
+    width: 80%;
+    margin: 1em auto;
+}
+
+.colonne-container-sujet {
+    display: flex; 
+    flex-direction: column;
+    flex: 1; 
+    border-radius: 15px;
+    height: 100%; 
+    margin-bottom: 20px;
+    background-color: #F5E8E3;
+    border: 2px solid black; 
+}
+
+.premier-bloc-sujet, .deuxieme-bloc-sujet, .troisieme-bloc-sujet {
+    width: 100%;
+    display: flex; 
+    flex-direction: column;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1); 
+    flex: 1; 
+    padding: 10px;
+}
+
+.premier-bloc-sujet{
+    border-bottom: 2px solid #AED3EA 
+}
+
+.troisieme-bloc-sujet{
+    position: relative;
+    order: 3;
+    background-color: #F5E8E3;
+    border-radius: 15px;
+    border: 2px solid black;
+}
+.comment-item {
+    list-style: none;
+    margin-bottom: 1em;
+    border-bottom: 3px solid #AED3EA;
+}
+
+
+.comment-item:nth-child(even) {
+    background-color: #e8d9d3; 
+}
+
+.comment-item .Auteur{
+    font-size: 1.5em;
+    display: flex;
+    justify-content: space-between;
+    color: #5A86A1;
+}
+.comment-item .date{
+    color: #AED3EA;
+}
+.comment-item .date p{
+    display: inline-block; 
+    padding: 2px 5px; 
+    border: 1px solid #AED3EA; 
+    border-radius: 5px; 
+    background-color: #FFE893; 
+    color: black; 
+    font-size: 14px; 
+    font-weight: bold; 
+}
+
+#comment-form{
+    display: flex;
+    flex-direction: column;
+    gap: 1em;
+}
+
+#comment-input{
+    width: 80%;
+}
+.frozen{
+    position: absolute;
+    width: 8em;
+    right: -3em;
+    bottom: -2em;
+}
+
+a .bouton-forum {
+    background-color: #5A86A1;
+    color: white;
+    border: 2px solid black;
+    border-radius: 15px;
+    padding: 1em;
+    font-size: 1em;
+    cursor: pointer !important;
+    width: 12em;
+    z-index: 999;
+}
+
+.bouton2 {
+    margin: 0 auto;
+    background-color: #5A86A1;
+    color: white;
+    border: 2px solid black;
+    border-radius: 15px;
+    padding: 1em;
+    font-size: 1em;
+    cursor: pointer;
+    width: 7em;
+}
+
+.bouton3{
+    background-color: #FFE893;
+    margin: auto;
+    width: fit-content;
+    color: #000;
+    text-decoration: none;
+    border: 2px solid #5A86A1;
+    border-radius: 15px;
+    padding: 6px;
+    font-size: 1em;
+    cursor: pointer;
+}
+
+.modifier {
+    display: inline-flex;
+    padding: 2px 5px;
+    border: 1px solid #ffe793;
+    border-radius: 5px;
+    background-color: #5A86A1;
+    color: #ffffff;
+    font-size: 14px;
+    font-weight: bold;
+    margin-bottom: 1em;
+    align-items: center;
+}
+
+/* Styles communs */
+.categorie {
+    background-color: rgb(0 0 0 / 14%);
+    text-shadow: 1px 1px black;
+    width: fit-content;
+    padding: 5px;
+    border-radius: 1em;
+}
+
+/* Couleurs spécifiques */
+.categorie-1 { color: #AED3EA !important; }
+.categorie-2 { color: #FFE893 !important; }
+.categorie-3 { color: #DCB5A6 !important; }
+.categorie-4 { color: #4B7792 !important; }
+.categorie-5 { color: #BA9D36 !important; }
+
+/* 
+**********************
+Media Queries
+**********************
+*/
+@media screen and (max-width: 1204px){
+    .container-forum {
+        flex-direction: column;
+        padding: 1em;
+    }
+        .container-sujet h2{
+        width: 76% !important;
+    }
+}
+
+@media screen and (max-width: 990px) {
+    .container-forum {
+        flex-direction: column;
+        align-items: center;
+        padding: 1em;
+    }
+
+    .troisieme-bloc-sujet{
+        order: -1;
+        margin-bottom: 1em;
+    }
+
+    .frozen{
+        width: 6em;
+        top: -1em;
+        right: -1em;
+    }
+
+    .comment-item .Auteur {
+        font-size: 1.2em;
+    }
+    .bouton-forum{
+        right: 4em;
+        top: 50%;
+    }
+}
+
+

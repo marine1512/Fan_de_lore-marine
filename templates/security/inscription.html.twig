@@ -1,0 +1,45 @@
+{% extends 'base.html.twig' %}
+
+{% block javascripts %}
+{{ parent() }}
+    <script src="{{ asset('styles/javascript/login.js') }}" defer></script>
+{% endblock %}
+
+{% block stylesheets %}
+{{ parent() }}
+   <link rel="stylesheet" href="{{ asset('styles/css/form.css') }}?v=1.0">
+{% endblock %}
+
+{% block body %}       
+    {% for flash_error in app.flashes('verify_email_error') %}
+        <div class="alert alert-danger" role="alert">
+        {{ flash_error }}
+        </div>
+    {% endfor %}
+<div class="mickey">
+    <img src="{{ asset('images/mickey-formulaire.png') }}" alt="formulaire en forme de mickey" class="image_mickey">
+    {# Affiche les erreurs globales du formulaire (non liées à un champ spécifique) #}
+    {{ form_errors(registrationForm) }}
+
+    {{ form_start(registrationForm) }}
+    <div class="form-mickey">
+        <h2>INSCRIPTION !</h2>
+        <div class="form">
+            {{ form_row(registrationForm.username, {
+                label: 'Ton identifiant :'
+            }) }}
+            {{ form_row(registrationForm.email, {
+                label: 'Ton adresse mail (pour te joindre) :'
+            }) }}
+            {{ form_row(registrationForm.plainPassword, {
+                label: 'Ton mot de passe :',
+                attr: {'id': 'password'}
+            }) }}
+            <img src="{{ asset('images/eye.png') }}" alt="masquer/afficher le mot de passe" id="eye" class="image_mdp3">
+            <p class="MDP">Le mot de passe doit faire 6 caractères minimum</p>
+        </div>
+            <button type="submit" class="bouton">Créer</button>    
+    </div>
+    {{ form_end(registrationForm) }}
+</div>
+{% endblock %}

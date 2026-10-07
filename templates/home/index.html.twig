@@ -1,0 +1,69 @@
+{% extends 'base.html.twig' %}
+
+
+{% block stylesheets %}
+{{ parent() }}
+   <link rel="stylesheet" href="{{ asset('styles/css/body.css') }}?v=1.0">
+{% endblock %}
+
+{% block body_attributes %}
+  data-controller="loader"
+  data-loader-timeout-value="10000"   {# 10 secondes #}
+
+{% endblock %}
+
+{% block body %}
+<h1>Forum sur le monde de Mickey</h1>    
+{% if is_granted('IS_AUTHENTICATED_FULLY') %}
+  <div class="image_mickey-container">
+    <a href="{{ path('profil') }}"><img src="{{ asset('images/mickey-form.png') }}" alt="image en forme de mickey" class="image_mickey">
+    <div class="membre-mickey">
+      <ul>
+        <li>
+          <p>Hello</p>
+          <p>{{ app.user.username }} !</p>
+          <p>⭐️</p>
+        </li>
+      </ul>
+    </div>
+    </a>
+  </div>
+{% endif %}
+
+   <div class='container'>    
+      <div class='colonne-container'>
+         <div class='bloc'>
+            <h2>Les nouveautés</h2>
+            {% for sujet in dernieresNouveautes %}
+                 <p>✨ 
+                  {% if is_granted('IS_AUTHENTICATED_FULLY') %}
+                     <a href="{{ path('forum_sujet_detail', {id: sujet.id}) }}">{{ sujet.name }}</a>
+                  {% else %}
+                     {{ sujet.name }}
+                  {% endif %}
+               </p>
+            {% else %}
+               <p>Aucune nouveauté pour le moment.</p>
+            {% endfor %}
+         </div>
+         <div class='bloc-fee'>
+            <h2>Tout le monde en parle</h2>
+            {% for row in topDiscussed %}
+         {% set sujet = row[0] %}
+         {% set nb = row.nbComments|default(0) %}
+               <p>
+                  {% if is_granted('IS_AUTHENTICATED_FULLY') %}
+                     <a href="{{ path('forum_sujet_detail', { id: sujet.id }) }}">{{ sujet.name }}</a>
+                  {% else %}
+                     {{ sujet.name }}
+                  {% endif %}
+                  <small class="nombre">({{ nb }} commentaire{{ nb == 1 ? '' : 's' }})</small>
+               </p>
+      {% else %}
+         <p>Aucun sujet discuté pour le moment.</p>
+      {% endfor %}
+            <img class='fee' src="{{ asset('images/fee_clochette.png') }}" alt="Image de fée clochette">
+         </div>
+      </div>
+   </div>
+{% endblock %}

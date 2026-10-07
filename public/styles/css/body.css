@@ -1,0 +1,246 @@
+html, body {
+    height: 100%; 
+    margin: 0; 
+    padding: 0;
+    transition: opacity 0.5s ease-in-out;
+}
+
+main {
+    font-family: "Indie Flower", cursive, sans-serif;
+    text-align: center;
+    margin: 0;
+    box-sizing: border-box;
+    background-image: url('/images/fond_du_site.png');
+    background-size: cover;
+    background-attachment: fixed;
+    display: flex;
+    width: 100%;
+    flex-direction: column;
+    align-items: center;
+    padding: 23em 0em 6em 0em;
+}
+
+h1 {
+    max-width: 31em;
+    text-shadow: 5px 7px 4px rgba(0, 0, 0, 0.3);
+}
+
+h2{
+    text-decoration: underline;
+}
+
+.container {
+    display: flex;
+    justify-content: space-between; 
+    justify-content: flex-end;
+    width: 100%; 
+    height: 100%;
+    margin-top: 2em;
+}
+
+.image_mickey-container {
+    position: relative; 
+    width: 14em;
+    top: -7em;
+    right: -22em;
+    cursor: pointer;
+}
+
+.image_mickey {
+    width: 100%;
+    display: block;
+}
+
+.membre-mickey {
+    position: absolute;
+    top: 60%;
+    left: 42%;
+    transform: translate(-50%, -50%);
+}
+.membre-mickey ul li {
+    list-style: none;
+}
+.membre-mickey ul li p{
+    font-family: 'Ribeye', sans-serif;
+    color: white;
+}
+
+.colonne-container p a{
+    color: black;
+    text-decoration: none;
+    cursor: pointer;
+}
+.colonne-container .nombre{
+    display: inline-block; 
+    padding: 2px 5px; 
+    border: 1px solid #AED3EA; 
+    border-radius: 5px; 
+    background-color: #FFE893; 
+    color: black; 
+    font-size: 14px; 
+    font-weight: bold; 
+}
+
+.colonne-container {
+    display: flex; 
+    flex-direction: column;
+    gap: 15px; 
+    flex: 1; 
+    height: 100%; 
+}
+
+.bloc {
+    background-color: #F5E8E3; 
+    border: 2px solid #000; 
+    border-radius: 15px; 
+    display: flex; 
+    flex-direction: column;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1); 
+    flex: 1; 
+}
+.bloc p{
+    font-family: 'Ribeye', sans-serif;
+    font-size: 15px;
+}
+.bloc-fee {
+    position: relative;
+    background-color: #F5E8E3; 
+    border: 2px solid #000; 
+    border-radius: 15px; 
+    display: flex;
+    flex-direction: column;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1); 
+    flex: 1; 
+}
+.bloc-fee p{
+    margin: auto; 
+    font-size: 15px;
+    padding: 11px;
+    font-family: 'Ribeye', sans-serif;
+    text-align: center; 
+}
+
+.fee{
+    width: 10em;
+    position: absolute;
+    bottom: -40px;
+    left: -50px;
+}
+
+/* 
+**********************
+Media Queries
+**********************
+*/
+@media screen and (max-width: 1204px) {
+    main {
+        padding: 20em 1em 1em 1em;
+    }
+    h1{
+        width: 24em;
+    }
+    .image_mickey-container{
+        top: 0em;
+        right: 0em;
+    }
+    .container {
+        flex-direction: column;
+        height: auto; 
+        max-width: 646px;
+        margin-top: 0em;
+    }
+    .colonne-container {
+        flex-direction: row;
+        flex-wrap: wrap; 
+        height: auto; 
+    }
+    .bloc, .second-bloc, .bloc-fee {
+        flex: 1 1 100%; 
+        height: auto; 
+    }
+    .bloc-fee p{
+        padding-left: 0; 
+    }
+    .fee{
+        top: -11em;
+        left: 49em;
+    }
+}
+
+@media screen and (max-width: 992px) {
+    h1{
+        width: 20em;
+    }
+    .bloc-fee p{
+        padding-left: 23%; 
+    }
+    .fee{
+        top: 6em;
+        left: -1em;
+    }
+}
+
+:root {
+  --loader-bg: rgba(18, 18, 20, 0.55); /* overlay */
+  --spinner-size: 64px;
+  --spinner-color: #4F46E5;            /* indigo */
+  --spinner-track: rgba(255,255,255,.25);
+}
+
+.loader-overlay {
+  position: fixed;
+  inset: 0;
+  background: var(--loader-bg);
+  display: grid;
+  place-items: center;
+  z-index: 9999;
+  transition: opacity .2s ease;
+  opacity: 1;
+}
+.loader-overlay.hidden {
+  opacity: 0;
+  pointer-events: none;
+}
+
+.spinner {
+  display: grid;
+  place-items: center;
+  gap: .75rem;
+}
+
+.spinner-svg {
+  width: var(--spinner-size);
+  height: var(--spinner-size);
+}
+
+.spinner-track {
+  stroke: var(--spinner-track);
+}
+
+.spinner-head {
+  stroke: var(--spinner-color);
+  stroke-dasharray: 120;
+  stroke-dashoffset: 60;
+  animation: spin 1.2s linear infinite, dash 1.2s ease-in-out infinite;
+}
+
+.spinner-label {
+  color: #fff;
+  font-weight: 600;
+  letter-spacing: .02em;
+}
+
+/* Animations */
+@keyframes spin {
+  to { transform: rotate(360deg); }
+}
+@keyframes dash {
+  0%   { stroke-dashoffset: 120; }
+  50%  { stroke-dashoffset: 30;  }
+  100% { stroke-dashoffset: 120; }
+}
+
+/* Accessibilité : réduire l’animation si l’utilisateur préfère moins de mouvements */
+@media (prefers-reduced-motion: reduce) {
+  .spinner-head { animation: spin 1.5s linear infinite; }
+}

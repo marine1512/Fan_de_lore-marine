@@ -1,0 +1,157 @@
+/* 0) Allège le main : tes paddings géants cassent le responsive */
+main{
+  /* le reste inchangé */
+  background-attachment: scroll;   /* mieux sur mobile */
+  min-height: 100vh;
+    padding: 17rem 0rem 0rem 0rem;
+      background-image: url('/images/fond_du_site.png');
+    background-size: cover;              /* à la place de 46em/24em */
+}
+
+/* 1) Conteneur image + overlay */
+.mickey{
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: min(100%, 65em);
+  margin: 0 auto;
+}
+.image_mickey{
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+/* 2) Overlay centré et dimensionné pour RESTER DANS LE VISAGE */
+.form-mickey{
+  position: absolute;
+  left: 50%;
+  top: 54%;
+  transform: translate(-50%, -50%);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  /* >>> largeur limitée pour ne pas dépasser le cercle (oreilles) */
+  width: 60%;            /* ajuste entre 55–62% selon ton PNG */
+  max-width: 28rem;      /* borne haute sur desktop */
+  min-width: 16rem;      /* borne basse pour lisibilité */
+  padding: 1rem;
+
+  /* assure l’enroulement du texte */
+  text-align: center;
+  overflow-wrap: anywhere;
+  word-break: normal;
+}
+
+/* 3) TYPO responsive SANS clamp : base rem + ajout vw + bornes */
+.form-mickey h2{
+    background-color: #5A86A1;
+    color: white;
+    border: 2px solid black;
+    border-radius: 20px;
+    padding: 13px;
+    font-size: 1.8rem;
+    line-height: 1.2;
+    margin: 0 0 .8rem 0;
+}
+.form-mickey p a{
+    padding: 10px;
+    border: 1px solid #AED3EA;
+    border-radius: 20px; 
+    background-color: #FFE893; 
+    color: #000;
+
+}
+
+form label {
+  display: block;        /* force le label à occuper toute la ligne */
+  margin-bottom: 0.4rem; /* petit espace avant l’input */
+}
+.form-mickey input,
+.bouton{
+  font-size: calc(.9rem + .6vw);
+}
+
+/* 4) Évite les largeurs/positions rigides qui font déborder */
+.form-mickey .form{
+  display: flex;
+  flex-direction: column;
+  gap: 1em;
+  width: 100%;           /* au lieu de 300px */
+}
+.form-mickey input{
+  width: 100%;
+  border-radius: 15px;
+  padding: 0.6rem 0.9rem;
+  box-sizing: border-box;
+}
+/* On enveloppe le champ dans un conteneur relatif */
+.input-with-icon {
+  position: relative;
+  width: 100%;
+}
+
+/* Champ texte : espace à droite pour l’icône */
+.input-with-icon input {
+  width: 100%;
+  border-radius: 15px;
+  padding: 0.6rem 3rem 0.6rem 0.9rem; /* <-- espace à droite ajouté */
+  box-sizing: border-box;
+  font-size: 1rem;
+}
+
+/* Icône œil positionnée à l’intérieur du champ */
+.image_mdp {
+  position: absolute;
+  right: 0.8rem;               /* collée au bord droit */
+  top: 50%;
+  transform: translateY(-50%);
+  width: 3rem;               /* ajuste la taille */
+  cursor: pointer;
+}
+.image_mdp3 {
+  position: absolute;
+  right: 2rem;               /* collée au bord droit */
+  top: 70%;
+  transform: translateY(-50%);
+  width: 3rem;               /* ajuste la taille */
+  cursor: pointer;
+}
+
+.MDP{
+    text-align: start;
+    font-size: 0.8rem;
+    color: #5b86a1;
+    margin-top: -1em;
+    margin-left: 10px;
+}
+.bouton, .bouton2{
+        background-color: #5A86A1;
+    color: white;
+    border: 2px solid black;
+    border-radius: 15px;
+    padding: 10px;
+    margin-top: 10px;
+}
+/* Si tu ne peux pas modifier le HTML tout de suite, au minimum: */
+
+@media (max-width: 800px){
+  .form-mickey { font-size: .8rem; }  
+}
+@media (max-width: 737px){
+  .image_mickey{
+    width: 110%;
+  }
+  .form-mickey { font-size: .6rem; }
+  .form-mickey input {
+    height: 1em;
+}
+}
+@media (max-width: 600px){
+  .form-mickey h2 {
+    font-size: 2em;
+  }
+
+}

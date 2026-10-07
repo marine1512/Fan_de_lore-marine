@@ -1,0 +1,42 @@
+{% extends 'base.html.twig' %}
+
+{% block javascripts %}
+{{ parent() }}
+    <script src="{{ asset('styles/javascript/login.js') }}" defer></script>
+{% endblock %}
+
+{% block stylesheets %}
+{{ parent() }}
+   <link rel="stylesheet" href="{{ asset('styles/css/profil.css') }}?v=1.0">
+{% endblock %}
+
+{% block body %}
+
+<h1>Mon profil !</h1>
+<div class='container-profil'>
+    <div class='premier-bloc-profil'>
+        <h2>Mes informations :</h2>
+        <p><strong class="titre">Pseudo : </strong> {{ user.username }}</p>
+        <p><a href="mailto:{{ user.email }}"><strong class="titre">Email :</strong> {{ user.email }}</a></p>
+        <p><strong class="titre">Est ici depuis le :</strong> {{ user.createdAt|date('d/m/Y') }}</p>
+    </div>
+    <div class='colonne-container-profil'>
+        <div class='deuxieme-bloc-profil'>
+            <h2>Mes activités :</h2>
+            {% if comments|length > 0 %}
+                <ul>
+                {% for comment in comments %}
+                    <li>
+                    <p><u class="titre">Commentaire dans le Sujet:</u> <a href="{{ path('profil') }}">{{ comment.subject.name }}</a></p>
+                    <p class="date"><strong >Publié le :</strong> {{ comment.date|date('d/m/Y H:i') }}</p>
+                    </li>
+                {% endfor %}
+                </ul>
+            {% else %}
+                <p>Vous n'avez encore laissé aucun commentaire.</p>
+            {% endif %}
+        </div>
+    </div>
+</div>
+
+{% endblock %}
